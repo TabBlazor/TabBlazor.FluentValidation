@@ -1,0 +1,25 @@
+﻿@page "/"
+@page "/form"
+
+<Card>
+    <CardHeader>
+        <h3>TabBlazor.FluentValidation - Form</h3>
+    </CardHeader>
+    <CardBody>
+        <TablerForm Model="@Model" OnValidSubmit="Submit">
+            
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <InputText class="form-control" @bind-Value="Model.Name"></InputText>
+                <ValidationMessage For="(() => Model.Name)"></ValidationMessage>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Age</label>
+                <InputNumber class="form-control" @bind-Value="Model.Age"></InputNumber>
+                <ValidationMessage For="(() => Model.Age)"></ValidationMessage>
+            </div>
+
+            <Button Type="ButtonType.Submit" Text="Save" class="mt-1"></Button>
+        </TablerForm>
+    </CardBody>
+</Card>

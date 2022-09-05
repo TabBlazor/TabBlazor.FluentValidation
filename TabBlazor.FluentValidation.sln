@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TabBlazor.FluentValidation.Server", "TabBlazor.FluentValidation.Server\TabBlazor.FluentValidation.Server.csproj", "{959B1136-1EEA-4BC4-B174-DF5EF8D3EFBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TabBlazor.FluentValidation", "src\TabBlazor.FluentValidation\TabBlazor.FluentValidation.csproj", "{BF48ECA0-67D3-4D37-9E90-163607C6C47F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{47F56C7C-AD20-4CFF-B43E-70CC876DFF0E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{A6F01BC4-8E67-4A45-820D-97AA3E2F94D1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{959B1136-1EEA-4BC4-B174-DF5EF8D3EFBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{959B1136-1EEA-4BC4-B174-DF5EF8D3EFBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{959B1136-1EEA-4BC4-B174-DF5EF8D3EFBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{959B1136-1EEA-4BC4-B174-DF5EF8D3EFBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF48ECA0-67D3-4D37-9E90-163607C6C47F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF48ECA0-67D3-4D37-9E90-163607C6C47F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF48ECA0-67D3-4D37-9E90-163607C6C47F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF48ECA0-67D3-4D37-9E90-163607C6C47F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BF48ECA0-67D3-4D37-9E90-163607C6C47F} = {47F56C7C-AD20-4CFF-B43E-70CC876DFF0E}
+		{959B1136-1EEA-4BC4-B174-DF5EF8D3EFBE} = {A6F01BC4-8E67-4A45-820D-97AA3E2F94D1}
+	EndGlobalSection
+EndGlobal
