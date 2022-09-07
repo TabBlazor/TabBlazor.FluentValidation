@@ -1,0 +1,32 @@
+﻿@page "/table-popup-async"
+@using TabBlazor.FluentValidation.Server.Validation
+
+<Card>
+    <CardHeader>
+        <h3>TabBlazor.FluentValidation - Table Popup Async</h3>
+    </CardHeader>
+    <CardBody>
+        <Table Item="Document" Items="Persons" OnItemEdited="Submit" EditMode="TableEditMode.Popup">
+            <Column Item="Document" Property="person => person.Name">
+                <Template>@context.Name</Template>
+                <EditorTemplate>
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <InputText class="form-control" @bind-Value="context.Name"></InputText>
+                        <ValidationMessage For="(() => context.Name)"></ValidationMessage>
+                    </div>
+                </EditorTemplate>
+            </Column>
+            <Column Item="Document" Property="person => person.Directory">
+                <Template>@context.Directory</Template>
+                <EditorTemplate>
+                    <div class="mb-3">
+                        <label class="form-label">Age</label>
+                        <InputText class="form-control" @bind-Value="context.Directory"></InputText>
+                        <ValidationMessage For="(() => context.Directory)"></ValidationMessage>
+                    </div>
+                </EditorTemplate>
+            </Column>
+        </Table>
+    </CardBody>
+</Card>

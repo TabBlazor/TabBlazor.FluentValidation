@@ -13,7 +13,7 @@ services.AddServerSideBlazor();
 
 services
     .AddTabBlazor()
-    .AddValidation<FluentValidationValidator>();
+    .AddValidation<TabBlazorFluentValidationValidator>();
 
 services
     .AddTransient<IValidator<Person>, PersonValidator>();

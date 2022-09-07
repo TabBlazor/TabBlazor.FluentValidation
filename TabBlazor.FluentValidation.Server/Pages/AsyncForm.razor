@@ -1,13 +1,13 @@
-﻿@page "/"
-@page "/form"
+﻿@page "/async"
+@using TabBlazor.FluentValidation.Server.Validation
 
 <Card>
     <CardHeader>
-        <h3>TabBlazor.FluentValidation - Async</h3>
+        <h3>TabBlazor.FluentValidation - Async Form</h3>
     </CardHeader>
     <CardBody>
-        <TablerForm Model="@Model" OnValidSubmit="Submit">
-            
+        <TablerForm Model="@Model" @ref="TheForm">
+
             <div class="mb-3">
                 <label class="form-label">Name</label>
                 <InputText class="form-control" @bind-Value="Model.Name"></InputText>
@@ -15,11 +15,11 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">Age</label>
-                <InputNumber class="form-control" @bind-Value="Model.Age"></InputNumber>
-                <ValidationMessage For="(() => Model.Age)"></ValidationMessage>
+                <InputText class="form-control" @bind-Value="Model.Directory"></InputText>
+                <ValidationMessage For="(() => Model.Directory)"></ValidationMessage>
             </div>
 
-            <Button Type="ButtonType.Submit" Text="Save" class="mt-1"></Button>
+            <Button Type="ButtonType.Button" Text="Save" class="mt-1" OnClick="Save"></Button>
         </TablerForm>
     </CardBody>
 </Card>

@@ -6,8 +6,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.1" />
-      <PackageReference Include="TabBlazor" Version="0.6.4-alpha" />
+        <PackageReference Include="FluentValidation" Version="11.2.1" />
+        <PackageReference Include="TabBlazor" Version="0.6.5-alpha" />
     </ItemGroup>
 
 </Project>
