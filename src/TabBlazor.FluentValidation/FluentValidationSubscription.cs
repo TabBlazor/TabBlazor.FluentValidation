@@ -7,7 +7,7 @@ namespace TabBlazor.FluentValidation;
 
 public class FluentValidationSubscription : IDisposable
 {
-    private const string PendingAsyncValidation = "AsyncValidationTask";
+    public const string PendingAsyncValidation = "AsyncValidationTask";
     private static readonly List<AssemblyScanner.AssemblyScanResult> AssemblyScanResults = new();
     private static readonly char[] Separators = { '.', '[' };
     private static readonly List<string> ScannedAssembly = new();

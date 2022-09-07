@@ -53,7 +53,7 @@ public class FluentValidationValidator : ComponentBase, IDisposable
             CurrentEditContext.Validate();
 
             if (!CurrentEditContext!.Properties.TryGetValue(
-                    EditContextFluentValidationExtensions.PendingAsyncValidation, out var asyncValidationTask))
+                    FluentValidationSubscription.PendingAsyncValidation, out var asyncValidationTask))
             {
                 throw new InvalidOperationException("No pending ValidationResult found");
             }
