@@ -7,29 +7,37 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v2
-      with:
-        dotnet-version: 6.0.x
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-    - name: Dotnet Pack
-      working-directory: src/TabBlazor.FluentValidation
-      run: dotnet pack -c Release
+      - name: Nerdbank.GitVersioning
+        uses: dotnet/nbgv@v0.4.0
 
-#    - name: Dotnet Nuget Push
-#      working-directory: src/TabBlazor.FluentValidation/bin/Release
-#      run: dotnet nuget push TabBlazor.FluentValidation.*.nupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET_API_KEY }}
-#      continue-on-error: true
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 6.0.x
 
-    - name: Create Release
-      uses: actions/create-release@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
-        draft: false
-        prerelease: true
+      - uses: dotnet/nbgv@master
+        id: nbgv
+      - run: echo 'SemVer2=${{ steps.nbgv.outputs.SemVer2 }}'
+
+      - name: Dotnet Pack
+        working-directory: src/TabBlazor.FluentValidation
+        run: dotnet pack -c Release
+
+      - name: Dotnet Nuget Push
+        working-directory: src/TabBlazor.FluentValidation/bin/Release
+        run: dotnet nuget push TabBlazor.FluentValidation.*.nupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET_API_KEY }}
+        continue-on-error: true
+
+      - name: Create Release
+        uses: actions/create-release@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.nbgv.outputs.SemVer2 }}
+          release_name: Release ${{ steps.nbgv.outputs.SemVer2 }}
+          draft: false
+          prerelease: true
