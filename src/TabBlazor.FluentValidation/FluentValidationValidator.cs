@@ -35,10 +35,6 @@ public class FluentValidationValidator : ComponentBase, IDisposable
         }
     }
 
-    /// <summary>
-    /// Validates this <see cref="EditContext"/>.
-    /// </summary>
-    /// <returns>True if there are no validation messages after validation; otherwise false.</returns>
     public async Task<bool> ValidateAsync(Action<ValidationStrategy<object>>? options = null)
     {
         if (CurrentEditContext is null)
@@ -79,7 +75,6 @@ public class FluentValidationValidator : ComponentBase, IDisposable
 
         _subscriptions = CurrentEditContext.AddFluentValidation(ServiceProvider, DisableAssemblyScanning, Validator, this);
     }
-
 
     public void Dispose()
     {
