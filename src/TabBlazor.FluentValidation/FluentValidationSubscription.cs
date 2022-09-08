@@ -18,8 +18,12 @@ public class FluentValidationSubscription : IDisposable
     private readonly FluentValidationValidator fluentValidationValidator;
     private readonly ValidationMessageStore messages;
 
-    public FluentValidationSubscription(EditContext editContext, IServiceProvider serviceProvider,
-        bool disableAssemblyScanning, IValidator? validator, FluentValidationValidator fluentValidationValidator)
+    public FluentValidationSubscription(
+        EditContext editContext, 
+        IServiceProvider serviceProvider,
+        bool disableAssemblyScanning, 
+        IValidator validator, 
+        FluentValidationValidator fluentValidationValidator)
     {
         this.editContext = editContext;
         this.serviceProvider = serviceProvider;
@@ -91,7 +95,7 @@ public class FluentValidationSubscription : IDisposable
         }
     }
 
-    private IValidator? GetValidatorForModel(IServiceProvider serviceProvider, object model,
+    private IValidator GetValidatorForModel(IServiceProvider serviceProvider, object model,
         bool disableAssemblyScanning)
     {
         var validatorType = typeof(IValidator<>).MakeGenericType(model.GetType());
@@ -166,7 +170,7 @@ public class FluentValidationSubscription : IDisposable
             var nextToken = propertyPathAsSpan.Slice(0, nextTokenEnd);
             propertyPathAsSpan = propertyPathAsSpan.Slice(nextTokenEnd + 1);
 
-            object? newObj;
+            object newObj;
             if (nextToken.EndsWith("]"))
             {
                 // It's an indexer

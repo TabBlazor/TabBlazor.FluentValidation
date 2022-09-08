@@ -8,15 +8,15 @@ namespace TabBlazor.FluentValidation;
 
 public class FluentValidationValidator : ComponentBase, IDisposable
 {
-    private IDisposable? _subscriptions;
+    private IDisposable _subscriptions;
     [Inject] private IServiceProvider ServiceProvider { get; set; } = default!;
-    [CascadingParameter] private EditContext? CurrentEditContext { get; set; }
-    [Parameter] public IValidator? Validator { get; set; }
+    [CascadingParameter] private EditContext CurrentEditContext { get; set; }
+    [Parameter] public IValidator Validator { get; set; }
     [Parameter] public bool DisableAssemblyScanning { get; set; }
-    [Parameter] public Action<ValidationStrategy<object>>? Options { get; set; }
-    internal Action<ValidationStrategy<object>>? ValidateOptions { get; set; }
+    [Parameter] public Action<ValidationStrategy<object>> Options { get; set; }
+    internal Action<ValidationStrategy<object>> ValidateOptions { get; set; }
 
-    public bool Validate(Action<ValidationStrategy<object>>? options = null)
+    public bool Validate(Action<ValidationStrategy<object>> options = null)
     {
         if (CurrentEditContext is null)
         {
@@ -35,7 +35,7 @@ public class FluentValidationValidator : ComponentBase, IDisposable
         }
     }
 
-    public async Task<bool> ValidateAsync(Action<ValidationStrategy<object>>? options = null)
+    public async Task<bool> ValidateAsync(Action<ValidationStrategy<object>> options = null)
     {
         if (CurrentEditContext is null)
         {
