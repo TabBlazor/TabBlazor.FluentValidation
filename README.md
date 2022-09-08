@@ -3,12 +3,10 @@ A library for using FluentValidation with [TabBlazor](https://github.com/joadan/
 
 [![Build](https://github.com/magahl/TabBlazor.FluentValidation/actions/workflows/ci.yml/badge.svg)](https://github.com/magahl/TabBlazor.FluentValidation/actions/workflows/ci.yml)
 
-![Nuget](https://img.shields.io/nuget/v/tabblazor.fluentvalidation.svg)
-
+[![Nuget](https://img.shields.io/nuget/v/tabblazor.fluentvalidation.svg)](https://www.nuget.org/packages/TabBlazor.FluentValidation/)
 ## Installing
 
 You can install from Nuget using the following command:
-
 `dotnet add package TabBlazor.FluentValidation`
 
 
