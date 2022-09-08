@@ -13,6 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".items", ".items", "{D9A150
 		.gitignore = .gitignore
 		Directory.Build.props = Directory.Build.props
 		version.json = version.json
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{EB344F72-1568-4117-B8AC-8BE6E17266C8}"
