@@ -19,10 +19,10 @@ public class FluentValidationSubscription : IDisposable
     private readonly ValidationMessageStore messages;
 
     public FluentValidationSubscription(
-        EditContext editContext, 
+        EditContext editContext,
         IServiceProvider serviceProvider,
-        bool disableAssemblyScanning, 
-        IValidator validator, 
+        bool disableAssemblyScanning,
+        IValidator validator,
         FluentValidationValidator fluentValidationValidator)
     {
         this.editContext = editContext;
@@ -33,11 +33,11 @@ public class FluentValidationSubscription : IDisposable
 
         messages = new ValidationMessageStore(editContext);
 
-        editContext.OnValidationRequested += ValidateModel;
-        editContext.OnFieldChanged += ValidateField;
+        editContext.OnFieldChanged += (_, _) => ValidateModel();
+        editContext.OnValidationRequested += (_, _) => ValidateModel();
     }
 
-    private async void ValidateModel(object sender, ValidationRequestedEventArgs e)
+    private async void ValidateModel()
     {
         validator ??= GetValidatorForModel(serviceProvider, editContext.Model, disableAssemblyScanning);
 
@@ -70,26 +70,6 @@ public class FluentValidationSubscription : IDisposable
                 var fieldIdentifier = ToFieldIdentifier(editContext, validationResult.PropertyName);
                 messages.Add(fieldIdentifier, validationResult.ErrorMessage);
             }
-
-            editContext.NotifyValidationStateChanged();
-        }
-    }
-
-    private async void ValidateField(object sender, FieldChangedEventArgs e)
-    {
-        var fieldIdentifier = e.FieldIdentifier;
-        var properties = new[] { fieldIdentifier.FieldName };
-        var context = new ValidationContext<object>(fieldIdentifier.Model, new PropertyChain(),
-            new MemberNameValidatorSelector(properties));
-
-        validator ??= GetValidatorForModel(serviceProvider, fieldIdentifier.Model, disableAssemblyScanning);
-
-        if (validator is not null)
-        {
-            var validationResults = await validator.ValidateAsync(context);
-
-            messages.Clear(fieldIdentifier);
-            messages.Add(fieldIdentifier, validationResults.Errors.Select(error => error.ErrorMessage));
 
             editContext.NotifyValidationStateChanged();
         }
@@ -233,8 +213,8 @@ public class FluentValidationSubscription : IDisposable
 
     public void Dispose()
     {
-        editContext.OnFieldChanged -= ValidateField;
-        editContext.OnValidationRequested -= ValidateModel;
+        editContext.OnFieldChanged -= (_, _) => ValidateModel();
+        editContext.OnValidationRequested -= (_, _) => ValidateModel();
         messages.Clear();
         editContext.NotifyValidationStateChanged();
     }
