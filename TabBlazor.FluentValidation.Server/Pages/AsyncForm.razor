@@ -18,6 +18,11 @@
                 <InputText class="form-control" @bind-Value="Model.Directory"></InputText>
                 <ValidationMessage For="(() => Model.Directory)"></ValidationMessage>
             </div>
+            <div class="mb-3">
+                <label class="form-label">Person Name</label>
+                <InputText class="form-control" @bind-Value="Model.Owner.Name"></InputText>
+                <ValidationMessage For="(() => Model.Owner.Name)"></ValidationMessage>
+            </div>
 
             <Button Type="ButtonType.Button" Text="Save" class="mt-1" OnClick="Save"></Button>
         </TablerForm>

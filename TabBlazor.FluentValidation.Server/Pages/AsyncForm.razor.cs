@@ -15,7 +15,7 @@ public partial class AsyncForm
 
     protected override void OnInitialized()
     {
-        Model = new Document() { Name = "Magnus", Directory = "C:/Test" };
+        Model = new Document() { Name = "Magnus", Directory = "C:/Test", Owner = new Person() { Name = "Kalle" } };
     }
 
     private async Task Save()

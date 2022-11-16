@@ -6,6 +6,8 @@ public class Document
 {
     public string Name { get; set; }
     public string Directory { get; set; }
+
+    public Person Owner { get; set; }
 }
 
 public class DocumentValidator : AbstractValidator<Document>
@@ -25,5 +27,8 @@ public class DocumentValidator : AbstractValidator<Document>
                 return result;
             })
             .WithMessage("Directory must be C:/Temp");
+
+        RuleFor(x => x.Owner)
+            .SetValidator(new PersonValidator());
     }
 }
