@@ -48,13 +48,12 @@ public class FluentValidationValidator : ComponentBase, IDisposable
         {
             CurrentEditContext.Validate();
 
-            if (!CurrentEditContext!.Properties.TryGetValue(
+            if (CurrentEditContext!.Properties.TryGetValue(
                     FluentValidationSubscription.PendingAsyncValidation, out var asyncValidationTask))
             {
-                throw new InvalidOperationException("No pending ValidationResult found");
+                await (Task<ValidationResult>)asyncValidationTask;
             }
 
-            await (Task<ValidationResult>)asyncValidationTask;
 
             return !CurrentEditContext.GetValidationMessages().Any();
         }
