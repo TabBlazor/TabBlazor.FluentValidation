@@ -30,7 +30,6 @@ jobs:
       - name: Dotnet Nuget Push
         working-directory: src/TabBlazor.FluentValidation/bin/Release
         run: dotnet nuget push TabBlazor.FluentValidation.*.nupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET_API_KEY }}
-        continue-on-error: true
 
       - name: Create Release
         uses: actions/create-release@master
