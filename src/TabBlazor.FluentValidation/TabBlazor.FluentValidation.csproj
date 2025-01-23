@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Description>Plugin for TabBlazor Validation using Fluent Validation</Description>
         <Authors>Magnus Ahlberg</Authors>
@@ -12,8 +12,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="FluentValidation" Version="11.2.1" />
-        <PackageReference Include="TabBlazor" Version="0.8.1.1-alpha" />
+        <PackageReference Include="FluentValidation" Version="11.11.0" />
+        <PackageReference Include="TabBlazor" Version="0.14.26-beta" />
     </ItemGroup>
 
 </Project>
